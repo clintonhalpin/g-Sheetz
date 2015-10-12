@@ -1,6 +1,6 @@
 var express = require('express'),
     _ = require('lodash');
-    creds = require('./../.env.js');
+    creds = require('./../etc/.env.js');
     moment = require('moment'),
     GoogleSpreadsheet = require("google-spreadsheet");
 
@@ -15,18 +15,17 @@ var app = module.exports = express.Router();
 
 app.post('/api/store', function(req, res) {
   if (!req.headers.username && !req.headers.password) {
-    res.status(400).send("You must send the username and the password");
+    res.status(400).send("Bad Request");
   }
 
   if(req.headers.username === creds.username && req.headers.password === creds.password && req.body) {
     spreadsheet.useServiceAccountAuth(sheetCreds, function(err){
       if(err) {
-          console.log(sheetCreds);
-          res.status(400).send('Creds do not match')
+        res.status(400).send('Invalid sheetz credentials')
       }
       spreadsheet.getInfo( function( err, sheet_info ){
         if(err) {
-          res.status(400).send('Error with spreadsheet')
+          res.status(400).send('Sheetz Error')
         }
         var params = {
             test: req.body.test,

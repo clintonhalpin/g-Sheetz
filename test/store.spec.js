@@ -3,7 +3,7 @@ var request = require("request");
 var boot = require('../server').boot;
 var port = require('../server').port;
 var shutdown = require('../server').shutdown;
-var creds = require('./../.env.js')
+var creds = require('./../etc/.env.js')
 
 describe("API", function(){
 
