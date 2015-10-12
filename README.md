@@ -15,12 +15,11 @@ npm run test
 ```
 
 ### api
+
+- GET `/`
+- POST `/api/store`
 ```
-- GET /
-
-- POST /api/store
-#required fields
-
+# required fields
 headers: {
   username: required,
   password: required
@@ -28,10 +27,8 @@ headers: {
 form: {
   [fields]
 }
-
-GET /api/store
-
 ```
+- GET `/api/store`
 
 ### environments
 
@@ -64,4 +61,4 @@ This project uses [google-spreadsheet](https://www.npmjs.com/package/google-spre
 
 =
 
-built with <3 by [@clintonhalpin](http://twitter.com/clintonhalpin)
+built with ♥ by [@clintonhalpin](http://twitter.com/clintonhalpin)
