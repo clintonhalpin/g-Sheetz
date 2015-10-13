@@ -28,6 +28,7 @@ describe("API", function(){
     });
 
     it("should succeed POST to api/store with valid credentials and data", function(done) {
+      this.timeout(20000);
       var params = {
         url: url + 'api/store',
         headers: {
@@ -37,8 +38,10 @@ describe("API", function(){
         form: {
           test: 'Holler'
         }
-      }
+      };
+
       request.post(params, function(error, response, body) {
+        console.log(response.statusCode);
         expect(response.statusCode).to.equal(200);
         done();
       });
